@@ -1,8 +1,13 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AgendaConsultorio {
     private List<Consulta> consultas;
+
+    public AgendaConsultorio(){
+        this.consultas = new ArrayList<>();
+    }
 
     // TODO: Fazer os métodos agendarConsulta(), listarConsultasPorMedico(), cancelarConsulta()
 
@@ -32,7 +37,7 @@ public class AgendaConsultorio {
         System.out.println("Erro: Consulta não encontrada.");
         return false;
     }
-
+    // Metodo criado para listar as consultas de um médico
     public void listarConsultasPorMedico(Medico medico){
         System.out.println("Consultas do Dr. " + medico.getNome() + " (" + medico.getEspecialidade() + "):");
         for (Consulta c : consultas){
@@ -42,4 +47,24 @@ public class AgendaConsultorio {
             }
         }
     }
+
+    // Metodo criado para listar as consultas de cada paciente.
+    public void listarConsultasPorPaciente(Paciente paciente){
+        System.out.println("Consultas do paciente: "+ paciente.getNome());
+        boolean encontrou = false;
+        for(Consulta c : consultas){
+            if(c.getPaciente().equals(paciente)){
+                c.exibirDetalhes();
+                System.out.println("--------------------------");
+                encontrou = true;
+            }
+        }
+        //Se encontrou ainda for false, !encontrou vira true, e a mensagem de erro será exibida.
+        //Se encontrou já foi mudado para true, !encontrou vira false, e o bloco if não roda.
+        if(!encontrou){
+            System.out.println("Nenhuma consulta encontrada para "+paciente.getNome());
+        }
+    }
+
+
 }

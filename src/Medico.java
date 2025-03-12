@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Medico extends Pessoa{
     private int crm;
     private String especialidade;
-    private ArrayList<String> listaDeConsultas = new ArrayList<>();
+    private ArrayList<Consulta> listaDeConsultas = new ArrayList<>();
 
     public int getCrm() {
         return crm;
@@ -21,11 +21,11 @@ public class Medico extends Pessoa{
         this.especialidade = especialidade;
     }
 
-    public ArrayList<String> getListaDeConsultas() {
+    public ArrayList<Consulta> getListaDeConsultas() {
         return listaDeConsultas;
     }
 
-    public void setListaDeConsultas(ArrayList<String> listaDeConsultas) {
+    public void setListaDeConsultas(ArrayList<Consulta> listaDeConsultas) {
         this.listaDeConsultas = listaDeConsultas;
     }
 }
